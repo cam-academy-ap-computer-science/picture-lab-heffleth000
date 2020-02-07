@@ -50,7 +50,7 @@ public class IntArrayWorker
   public int getColTotal(int col) {
 	  int length = 0;
 	  for (int i = 0; i < matrix.length; i++) {
-	      length += matrix [i][col];	  
+	      length += matrix [i] [col];	  
 	    }
 	  
 	  return length;
