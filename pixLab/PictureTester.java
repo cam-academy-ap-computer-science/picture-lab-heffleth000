@@ -13,7 +13,15 @@ public class PictureTester
   /** Method to test zeroBlue */
   public static void testZeroBlue()
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("Users/Ethan/git/picture-lab-heffleth000/images/beach.jpg");
+    beach.explore();
+    beach.zeroBlue();
+    beach.explore();
+  }
+  
+  public static void testKeepOnlyBlue()
+  {
+    Picture beach = new Picture("Users/Ethan/git/picture-lab-heffleth000/images/beach.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
@@ -61,7 +69,7 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     testZeroBlue();
-    //testKeepOnlyBlue();
+    testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
