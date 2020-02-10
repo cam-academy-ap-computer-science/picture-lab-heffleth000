@@ -45,7 +45,7 @@ public class PictureTester
   
   public static void testFixUnderwater()
   {
-    Picture beach = new Picture("Users/Ethan/git/picture-lab-heffleth000/images/beach.jpg");
+    Picture beach = new Picture("Ethan/git/picture-lab-heffleth000/images/beach.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
