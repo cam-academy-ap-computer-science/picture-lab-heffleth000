@@ -74,6 +74,13 @@ public class PictureTester
     moto.mirrorVertical();
     moto.explore();
   }
+  public static void testMirrorHorizontalBotToTop()
+  {
+    Picture moto = new Picture("images//redMotorcycle.jpg");
+    moto.explore();
+    moto.mirrorVertical();
+    moto.explore();
+  }
   
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
@@ -116,7 +123,8 @@ public class PictureTester
     //testFixUnderwater();
     //testMirrorVertical();
 	//testMirrorVerticalRightToLeft();
-	//testMirrorHorizontal();
+	testMirrorHorizontal();
+	//testMirrorHorizontalBotToTop();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();

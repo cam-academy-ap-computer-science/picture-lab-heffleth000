@@ -149,9 +149,7 @@ public class Picture extends SimplePicture
     {
       for (Pixel pixelObj : rowArray)
       {
-          pixelObj.setRed(130);
-          //pixelObj.setGreen(0);
-          //pixelObj.setRed(255);
+          pixelObj.setRed(pixelObj.getRed() + 75);
       }
     }
   }
@@ -200,13 +198,30 @@ public class Picture extends SimplePicture
     Pixel topPixel = null;
     Pixel botPixel = null;
     int height = pixels.length;
-    for (int row = 0; row < pixels.length; row++)
+    for (int row = 0; row < height / 2; row++)
     {
-      for (int col = 0; col < height / 2; col++)
-      {
+    	for (int col = 0; col < pixels[0].length; col++)
+    	{
         topPixel = pixels[row][col];
         botPixel = pixels[height - row -1][col];
         botPixel.setColor(topPixel.getColor());
+      }
+    } 
+  }
+  
+  public void mirrorHorizontalTopToBot()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel botPixel = null;
+    int height = pixels.length;
+    for (int row = 0; row < height / 2; row++)
+    {
+    	for (int col = 0; col < pixels[0].length; col++)
+    	{
+        topPixel = pixels[height - row - 1][col];
+        botPixel = pixels[row][col];
+        topPixel.setColor(botPixel.getColor());
       }
     } 
   }
@@ -318,14 +333,16 @@ public class Picture extends SimplePicture
   {
     Picture beach = new Picture("images//beach.jpg");
     Picture water = new Picture("images//water.jpg");
-    beach.explore();
+    Picture moto = new Picture("images//redMotorcycle.jpg");
+    //beach.explore();
     //beach.zeroBlue();
     //beach.keepOnlyBlue();
     //beach.negate();
     //beach.grayScale();
     //water.fixUnderwater();
     //beach.explore();
-    
+    moto.mirrorHorizontal();
+    //moto.mirrorHorizontalTopToBot();
   }
   
 } // this } is the end of class Picture, put all new methods before this
