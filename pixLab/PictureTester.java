@@ -71,14 +71,14 @@ public class PictureTester
   {
     Picture moto = new Picture("images//redMotorcycle.jpg");
     moto.explore();
-    moto.mirrorVertical();
+    moto.mirrorHorizontal();
     moto.explore();
   }
   public static void testMirrorHorizontalBotToTop()
   {
     Picture moto = new Picture("images//redMotorcycle.jpg");
     moto.explore();
-    moto.mirrorVertical();
+    moto.mirrorHorizontalBotToTop();
     moto.explore();
   }
   
@@ -86,6 +86,14 @@ public class PictureTester
   public static void testMirrorTemple()
   {
     Picture temple = new Picture("images//temple.jpg");
+    temple.explore();
+    temple.mirrorTemple();
+    temple.explore();
+  }
+  
+  public static void testMirrorArms()
+  {
+    Picture temple = new Picture("images//snowman.jpg");
     temple.explore();
     temple.mirrorTemple();
     temple.explore();
@@ -123,10 +131,10 @@ public class PictureTester
     //testFixUnderwater();
     //testMirrorVertical();
 	//testMirrorVerticalRightToLeft();
-	testMirrorHorizontal();
+	//testMirrorHorizontal();
 	//testMirrorHorizontalBotToTop();
     //testMirrorTemple();
-    //testMirrorArms();
+    testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();

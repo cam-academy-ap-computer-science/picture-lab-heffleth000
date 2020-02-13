@@ -209,7 +209,7 @@ public class Picture extends SimplePicture
     } 
   }
   
-  public void mirrorHorizontalTopToBot()
+  public void mirrorHorizontalBotToTop()
   {
     Pixel[][] pixels = this.getPixels2D();
     Pixel topPixel = null;
@@ -219,8 +219,8 @@ public class Picture extends SimplePicture
     {
     	for (int col = 0; col < pixels[0].length; col++)
     	{
-        topPixel = pixels[height - row - 1][col];
-        botPixel = pixels[row][col];
+        topPixel = pixels[row][col];
+        botPixel = pixels[height - row - 1][col];
         topPixel.setColor(botPixel.getColor());
       }
     } 
@@ -229,7 +229,36 @@ public class Picture extends SimplePicture
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
   {
+	int count1 = 0;
+	int count2 = 0;
+	int finalcount = count1 * count2;
+	
     int mirrorPoint = 276;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int count = 0;
+    Pixel[][] pixels = this.getPixels2D();
+    
+    // loop through the rows
+    for (int row = 27; row < 97; row++)
+    {
+      count1++;
+      // loop from 13 to just before the mirror point
+      for (int col = 13; col < mirrorPoint; col++)
+      {
+        count2++;
+        leftPixel = pixels[row][col];      
+        rightPixel = pixels[row]                       
+                         [mirrorPoint - col + mirrorPoint];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+    System.out.println(finalcount);
+  }
+  
+  public void mirrorArms()
+  {	
+    int mirrorPoint = 170;
     Pixel leftPixel = null;
     Pixel rightPixel = null;
     int count = 0;
@@ -241,7 +270,7 @@ public class Picture extends SimplePicture
       // loop from 13 to just before the mirror point
       for (int col = 13; col < mirrorPoint; col++)
       {
-        
+
         leftPixel = pixels[row][col];      
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
@@ -334,6 +363,7 @@ public class Picture extends SimplePicture
     Picture beach = new Picture("images//beach.jpg");
     Picture water = new Picture("images//water.jpg");
     Picture moto = new Picture("images//redMotorcycle.jpg");
+    Picture snowman = new Picture("images//snowman.jpg");
     //beach.explore();
     //beach.zeroBlue();
     //beach.keepOnlyBlue();
@@ -341,8 +371,9 @@ public class Picture extends SimplePicture
     //beach.grayScale();
     //water.fixUnderwater();
     //beach.explore();
-    moto.mirrorHorizontal();
-    //moto.mirrorHorizontalTopToBot();
+    //moto.mirrorHorizontal();
+    //moto.mirrorHorizontalBotToTop();
+    snowman.mirrorArms();
   }
   
 } // this } is the end of class Picture, put all new methods before this
