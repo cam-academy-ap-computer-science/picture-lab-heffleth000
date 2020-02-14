@@ -95,7 +95,7 @@ public class PictureTester
   {
     Picture temple = new Picture("images//snowman.jpg");
     temple.explore();
-    temple.mirrorTemple();
+    temple.mirrorArms();
     temple.explore();
   }
   
@@ -107,10 +107,17 @@ public class PictureTester
     canvas.explore();
   }
   
+  public static void testCollage2()
+  {
+    Picture canvas = new Picture("images//640x480.jpg");
+    canvas.createCollage2();
+    canvas.explore();
+  }
+  
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
-    Picture swan = new Picture("imagesswan.jpg");
+    Picture swan = new Picture("images//swan.jpg");
     swan.edgeDetection(10);
     swan.explore();
   }
@@ -134,10 +141,11 @@ public class PictureTester
 	//testMirrorHorizontal();
 	//testMirrorHorizontalBotToTop();
     //testMirrorTemple();
-    testMirrorArms();
+    //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
-    //testCollage();
+    testCollage();
+	//testCollage2();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();

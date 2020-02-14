@@ -309,22 +309,68 @@ public class Picture extends SimplePicture
       }
     }   
   }
+  
+  public void copy2(Picture fromPic, 
+          int fromStartRow, int fromStartCol,
+          int fromEndRow, int fromEndCol,
+          int toStartRow, int toStartCol)
+  {
+	  Pixel fromPixel = null;
+	  Pixel toPixel = null;
+	  Pixel[][] toPixels = this.getPixels2D();
+	  Pixel[][] fromPixels = fromPic.getPixels2D();
+	  for (int fromRow = fromStartRow, toRow = toStartRow; 
+		fromRow <= fromEndRow && toRow < toPixels.length;
+			  fromRow++, toRow++)
+	  {
+		  for (int fromCol = fromStartCol, toCol = toStartCol; 
+			 fromCol <= fromEndCol &&
+			 toCol < toPixels[0].length;  
+			 fromCol++, toCol++)
+		  { 
+			  fromPixel = fromPixels[fromRow][fromCol];
+			  toPixel = toPixels[toRow][toCol];
+			  toPixel.setColor(fromPixel.getColor());
+		  }
+	  }   
+  }
 
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
-    Picture flower1 = new Picture("flower1.jpg");
-    Picture flower2 = new Picture("flower2.jpg");
+    Picture flower1 = new Picture("images//flower1.jpg");
+    Picture flower2 = new Picture("images//flower2.jpg");
+    Picture flower3 = new Picture("images//flower2.jpg");
     this.copy(flower1,0,0);
     this.copy(flower2,100,0);
     this.copy(flower1,200,0);
     Picture flowerNoBlue = new Picture(flower2);
     flowerNoBlue.zeroBlue();
     this.copy(flowerNoBlue,300,0);
+    
+    flower3.keepOnlyBlue();
+    this.copy(flower3, 300, 0);
+    
     this.copy(flower1,400,0);
     this.copy(flower2,500,0);
     this.mirrorVertical();
-    this.write("collage.jpg");
+    this.write("images//collage.jpg");
+  }
+  
+  public void createCollage2()
+  {
+    Picture flower1 = new Picture("images//flower1.jpg");
+    Picture flower2 = new Picture("images//flower2.jpg");
+    this.copy2(flower1,0,0,0,0,0,0);
+    this.copy2(flower2,100,0,0,0,0,0);
+    this.copy2(flower1,200,0,0,0,0,0);
+    Picture flowerNoBlue = new Picture(flower2);
+    flowerNoBlue.zeroBlue();
+    this.copy2(flowerNoBlue,300,0,0,0,0,0);
+    this.copy2(flower1,400,0,0,0,0,0);
+    this.copy2(flower2,500,0,0,0,0,0);
+    this.mirrorVertical();
+    this.write("images//collage.jpg");
   }
   
   
@@ -373,7 +419,7 @@ public class Picture extends SimplePicture
     //beach.explore();
     //moto.mirrorHorizontal();
     //moto.mirrorHorizontalBotToTop();
-    snowman.mirrorArms();
+    //snowman.mirrorArms();
   }
   
 } // this } is the end of class Picture, put all new methods before this
