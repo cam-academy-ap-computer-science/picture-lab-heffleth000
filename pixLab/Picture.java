@@ -258,23 +258,47 @@ public class Picture extends SimplePicture
   
   public void mirrorArms()
   {	
-    int mirrorPoint = 170;
-    Pixel leftPixel = null;
-    Pixel rightPixel = null;
+    int mirrorPoint = 194;
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
     int count = 0;
     Pixel[][] pixels = this.getPixels2D();
     
     // loop through the rows
-    for (int row = 27; row < 97; row++)
+    for (int row = 160; row < mirrorPoint; row++)
     {
       // loop from 13 to just before the mirror point
-      for (int col = 13; col < mirrorPoint; col++)
+      for (int col = 100; col < 300; col++)
       {
 
-        leftPixel = pixels[row][col];      
-        rightPixel = pixels[row]                       
-                         [mirrorPoint - col + mirrorPoint];
-        rightPixel.setColor(leftPixel.getColor());
+        topPixel = pixels[row][col];      
+        bottomPixel = pixels[mirrorPoint - row + mirrorPoint]                       
+                         [col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+  }
+  
+  public void mirrorGull()
+  {
+	  
+	  //bird's box is col: 230 - 348  row: 230 - 325
+    int mirrorPoint = 348;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+
+    Pixel[][] pixels = this.getPixels2D();
+    
+    // loop through the rows
+    for (int row = 230; row < 325; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 230; col < mirrorPoint; col++)
+      {
+        rightPixel = pixels[row][col];      
+        leftPixel = pixels[row - 20]                       
+                         [mirrorPoint - col + mirrorPoint/4];
+        leftPixel.setColor(rightPixel.getColor());
       }
     }
   }
