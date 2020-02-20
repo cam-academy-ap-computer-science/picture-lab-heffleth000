@@ -100,6 +100,18 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void zeroRed()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(0);
+      }
+    }
+  }
+  
   public void keepOnlyBlue()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -405,9 +417,14 @@ public class Picture extends SimplePicture
   {
     Pixel leftPixel = null;
     Pixel rightPixel = null;
+    
+    Pixel topPixel = null;
+    Pixel botPixel = null;
+    
     Pixel[][] pixels = this.getPixels2D();
     Color rightColor = null;
-    for (int row = 0; row < pixels.length; row++)
+    Color botColor = null;
+    for (int row = 0; row < pixels.length - 1; row++)
     {
       for (int col = 0; 
            col < pixels[0].length-1; col++)
@@ -415,14 +432,25 @@ public class Picture extends SimplePicture
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][col+1];
         rightColor = rightPixel.getColor();
+        
+        topPixel = pixels[row][col];
+        botPixel = pixels[row + 1][col];
+        
         if (leftPixel.colorDistance(rightColor) > 
-            edgeDist)
+            edgeDist || topPixel.colorDistance(botPixel.getColor()) > 
+          	edgeDist)
           leftPixel.setColor(Color.BLACK);
         else
           leftPixel.setColor(Color.WHITE);
       }
-    }
-  }
+      	//if (topPixel.colorDistance(botPixel.getColor()) > 
+      	//edgeDist)
+    	//  topPixel.setColor(Color.BLACK);
+      	//else
+    	//  topPixel.setColor(Color.WHITE);
+    	}
+  	}
+  
   
   
   /* Main method for testing - each class in Java can have a main 

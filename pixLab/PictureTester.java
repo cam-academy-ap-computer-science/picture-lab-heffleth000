@@ -27,6 +27,14 @@ public class PictureTester
     beach.explore();
   }
   
+  public static void testZeroRed()
+  {
+    Picture beach = new Picture("images//sunset.jpg");
+    beach.explore();
+    beach.zeroRed();
+    beach.explore();
+  }
+  
   public static void testNegate()
   {
     Picture beach = new Picture("images//beach.jpg");
@@ -122,6 +130,12 @@ public class PictureTester
     canvas.explore();
   }
   
+  public static void testMyCollage() {
+	  Picture canvas = new Picture("images//640x480.jpg");
+	  canvas.createCollage2();
+	  canvas.explore();
+  }
+  
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
@@ -138,6 +152,7 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
+	//testZeroRed();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
@@ -150,12 +165,13 @@ public class PictureTester
 	//testMirrorHorizontalBotToTop();
     //testMirrorTemple();
     //testMirrorArms();
-    testMirrorGull();
+    //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
 	//testCollage2();
+	//testMyCollage();
     //testCopy();
-    //testEdgeDetection();
+    testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
