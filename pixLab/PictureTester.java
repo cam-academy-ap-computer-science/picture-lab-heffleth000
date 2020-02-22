@@ -139,7 +139,7 @@ public class PictureTester
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
-    Picture swan = new Picture("images//swan.jpg");
+    Picture swan = new Picture("images//moon-surface.jpg");
     swan.edgeDetection(10);
     swan.explore();
   }
